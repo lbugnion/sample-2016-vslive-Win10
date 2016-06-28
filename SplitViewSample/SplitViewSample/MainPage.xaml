@@ -1,0 +1,135 @@
+﻿<Page x:Class="SplitViewSample.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d"
+      MinWidth="100">
+    
+    <SplitView x:Name="LayoutRoot"
+               Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+               IsPaneOpen="True">
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720" />
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="LayoutRoot.DisplayMode"
+                                Value="Inline" />
+                        <Setter Target="LayoutRoot.IsPaneOpen"
+                                Value="True" />
+                        <Setter Target="FirstNameText.(RelativePanel.RightOf)"
+                                Value="FirstNameLabel" />
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="LayoutRoot.DisplayMode"
+                                Value="CompactOverlay" />
+                        <Setter Target="LayoutRoot.IsPaneOpen"
+                                Value="False" />
+                        <Setter Target="FirstNameText.(RelativePanel.Below)"
+                                Value="FirstNameLabel" />
+                        <Setter Target="FirstNameText.(RelativePanel.RightOf)"
+                                Value="" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+
+        <SplitView.Pane>
+            <Grid Background="#FFD8D8D8">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Rectangle Fill="Blue" />
+
+                <Button VerticalAlignment="Stretch"
+                        Click="TogglePane1ButtonClick"
+                        Style="{StaticResource TogglePaneButtonStyle}" />
+
+                <StackPanel Grid.Row="1">
+
+                    <Button Content="Option 1"
+                            Style="{StaticResource OptionButtonStyle}"
+                            Background="#FFF3FF00"
+                            Click="OptionButtonClick" />
+
+                    <Button Content="Option 2"
+                            Style="{StaticResource OptionButtonStyle}"
+                            Background="Red"
+                            Click="OptionButtonClick" />
+
+                    <Button Content="Option 3"
+                            Style="{StaticResource OptionButtonStyle}"
+                            Background="#FF0023FF"
+                            Click="OptionButtonClick" />
+
+                </StackPanel>
+
+                <StackPanel Grid.Row="2">
+
+                    <Button Content="Image"
+                            Style="{StaticResource OptionButtonStyle}"
+                            Background="#FFD900FF"
+                            Click="ImageButtonClick" />
+
+                    <Button Content="Relative panel"
+                            Style="{StaticResource OptionButtonStyle}"
+                            Background="#FF4EFC00"
+                            Click="RelativePanelButtonClick" />
+
+                </StackPanel>
+            </Grid>
+        </SplitView.Pane>
+
+        <Grid Background="Green">
+            <Image Margin="10,10,10,10"
+                   x:Name="MyImage"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Source="Assets/el20150524010.jpg"
+                   Stretch="Uniform" />
+
+            <RelativePanel x:Name="MyRelativePanel"
+                           Margin="12"
+                           Visibility="Collapsed">
+                <TextBlock x:Name="FirstNameLabel"
+                           TextWrapping="Wrap"
+                           Text="First Name:"
+                           FontSize="26"
+                           Margin="0,3,8,8" />
+
+                <TextBox PlaceholderText="Enter your first name"
+                         x:Name="FirstNameText"
+                         FontSize="24" />
+            </RelativePanel>
+            
+            <StackPanel VerticalAlignment="Bottom"
+                        HorizontalAlignment="Left"
+                        Margin="10,0,0,10">
+                <TextBlock Text="(c) 2016 Laurent Bugnion"
+                            Foreground="White"
+                            FontFamily="Segoe UI Semibold"
+                            FontSize="22" />
+                <TextBlock Text="identitymine.com | galasoft.ch"
+                            Foreground="White"
+                            FontSize="18" />
+            </StackPanel>
+
+        </Grid>
+    </SplitView>
+</Page>
