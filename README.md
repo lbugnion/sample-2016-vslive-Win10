@@ -1,12 +1,16 @@
 # Windows 10 – The Universal Application: One App To Rule Them All?
 
-My code samples for the Visual Studio Live conference 2016 (Boston MA)
+My code samples for the Visual Studio Live conference 2016 (Boston MA - Redmond WA)
 
 # Presentation details, Slides, Video
 
-You can see the video recording and the slides here:
+You can see the slides here:
 
+Boston:
 http://galasoft.ch/presentations/presentationdetails.cshtml?name=2016010
+
+Redmond:
+http://galasoft.ch/presentations/presentationdetails.cshtml?name=TODO
 
 # Content
 
